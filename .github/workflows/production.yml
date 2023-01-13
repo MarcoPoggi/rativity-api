@@ -1,0 +1,39 @@
+name: production
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: setup ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+      - name: install packages
+        run: npm ci #using package-lock
+
+      # testing
+      # - name: run tests
+      #   run: npm run test
+
+      # deployment      
+      - name: deploy
+        run: npm i -g @railway/cli && railway up
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_PROD }}
+        if: github.event_name == 'push'
