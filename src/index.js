@@ -3,7 +3,7 @@ require("dotenv").config()
 const server = require("express")()
 const port = process.env.PORT || 3000
 
-server.get('/healtcheck', (req, res) => {
+server.get('/healthcheck', (req, res) => {
   res.send("Rativity API it's work")
 })
 
