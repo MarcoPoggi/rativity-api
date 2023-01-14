@@ -15,10 +15,6 @@ const enviroments = {
     database: 'rativity_test',
     ...credentials,
   },
-  staging: {
-    database: process.env.PGDATABASE,
-    ...credentials
-  },
   production: {
     database: process.env.PGDATABASE,
     ...credentials

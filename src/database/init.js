@@ -1,18 +1,17 @@
-const current_enviroment = process.env.NODE_ENV
+const CURRENT_ENVIROMENT = process.env.NODE_ENV
 
 const { Sequelize } = require('sequelize');
 const { Client } = require("pg")
 const { config } = require('./config');
 
 
-
 //create database (test/dev) if don't exists.
-if (current_enviroment === 'development' || current_enviroment === 'test') {
+if (CURRENT_ENVIROMENT === 'development' || CURRENT_ENVIROMENT === 'test') {
   let { username, password, host } = config
   let localPostgresUrl = `postgres://${username}:${password}@${host}/postgres`
   let localClient = new Client(localPostgresUrl)
 
-  localClient.connect()
+  localClient.connect() //connect db
 
   localClient.query(`CREATE DATABASE ${config.database}`, (error) => {
     error
@@ -22,7 +21,6 @@ if (current_enviroment === 'development' || current_enviroment === 'test') {
     localClient.end() //close postgres connection
   })
 }
-
 
 const database = new Sequelize(config)
 
