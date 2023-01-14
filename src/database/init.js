@@ -1,9 +1,6 @@
-const CURRENT_ENVIROMENT = process.env.NODE_ENV
-
 const { Sequelize } = require('sequelize');
 const { Client } = require("pg")
 const { config } = require('./config');
-
 
 //create database (test/dev) if don't exists.
 let { username, password, host } = config
@@ -20,11 +17,9 @@ localClient.query(`CREATE DATABASE ${config.database}`, (error) => {
 
   localClient.end() //close postgres connection
 
-  
   database.authenticate()
     .then(() => console.log('Connection has been established successfully.'))
     .catch((e) => console.error('Unable to connect to the database:', e))
 })
-
 
 module.exports = { database }
