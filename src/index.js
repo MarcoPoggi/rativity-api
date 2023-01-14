@@ -1,4 +1,5 @@
 require("dotenv").config()
+require("./database/init")
 
 const server = require("express")()
 const port = process.env.PORT || 3000
@@ -9,4 +10,5 @@ server.get('/healthcheck', (req, res) => {
 
 server.listen(port, () => {
   console.log(`Rativity API listeing on port ${port}`)
+  console.log(process.env.NODE_ENV)
 })
