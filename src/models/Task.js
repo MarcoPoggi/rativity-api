@@ -6,11 +6,11 @@ const Task = database.define('Task', {
         type: DataTypes.STRING,
         allowNull: false
         // 30 characters
-    }, 
+    },
     description: {
         type: DataTypes.TEXT,
         // 140 characters
-    }, 
+    },
     status: {
         type: DataTypes.ENUM({
             values: ['active', 'completed', 'deleted']
@@ -33,4 +33,4 @@ const Task = database.define('Task', {
     }
 })
 
-module.exports = Task;
+module.exports = { Task };
