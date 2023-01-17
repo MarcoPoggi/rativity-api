@@ -3,7 +3,9 @@ const credentials = {
   password: process.env.PGPASSWORD,
   host: process.env.PGHOST,
   port: process.env.PGPORT,
-  dialect: "postgres"
+  dialect: "postgres",
+  logging: false, 
+  native: false 
 }
 
 const enviroments = {
