@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "set NODE_ENV=test && mocha"
+    "test": "set NODE_ENV=test && mocha",
+    "tasks": "node lib/task_runner.js"
   },
   "author": "rativity",
   "license": "MIT",
