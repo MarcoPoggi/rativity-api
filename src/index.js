@@ -1,5 +1,5 @@
 require("dotenv").config()
-require("./database/init")
+require("./database/database")
 
 const server = require("express")()
 const port = process.env.PORT || 3000
