@@ -1,4 +1,3 @@
-require("dotenv").config()
 const ENV = process.env.NODE_ENV
 
 const DATABASE_DEFAULT = {
