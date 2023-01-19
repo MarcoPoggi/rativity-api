@@ -19,8 +19,6 @@ jobs:
         image: postgres:15-alpine
         env:
           POSTGRES_PASSWORD: postgres
-          POSTGRES_USER: postgres
-          POSTGRES_DB: postgres_test
 
         options: >-
           --health-cmd pg_isready
@@ -42,6 +40,9 @@ jobs:
       - name: install packages
         run: npm ci #using package-lock
 
+      - name: connect to postgres
+        run: node src/database/database.js
+
       # testing
       - name: run tests
         run: npm test
@@ -51,4 +52,8 @@ jobs:
         run: npm i -g @railway/cli && railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_PROD }}
+          PGUSER: postgres
+          PGDATABASE: postgres
+          PGPORT: 5432
+          PGHOST: localhost
         if: github.event_name == 'push'

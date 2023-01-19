@@ -18,7 +18,7 @@ jobs:
       postgres:
         image: postgres:15-alpine
         env:
-          PGPASSWORD: postgres
+          POSTGRES_PASSWORD: postgres
 
         options: >-
           --health-cmd pg_isready
@@ -40,7 +40,7 @@ jobs:
         run: npm ci #using package-lock
 
       - name: connect to postgres
-        run: npm start
+        run: node src/database/database.js
 
       # testing
       - name: run tests
@@ -54,4 +54,5 @@ jobs:
           PGUSER: postgres
           PGDATABASE: postgres
           PGPORT: 5432
+          PGHOST: localhost
         if: github.event_name == 'push'
