@@ -4,32 +4,48 @@ const { database } = require('../database/database.js');
 const Task = database.define('task', {
     title: {
         type: DataTypes.STRING,
-        allowNull: false
-        // 30 characters
+        allowNull: false,
+        validate: {
+            len: [1, 30]
+        }
     },
     description: {
         type: DataTypes.TEXT,
-        // 140 characters
+        validate: {
+            len: [0, 140]
+        }
     },
     status: {
         type: DataTypes.ENUM({
-            values: ['active', 'completed', 'deleted']
+            values: ['active', 'completed', 'due', 'deleted']
         }),
-        allowNull: false,
-        // defaultValue: 'active'
+        defaultValue: 'active',
+        allowNull: false
     },
     dueDate: {
-        type: DataTypes.DATE
+        type: DataTypes.DATE,
+        validate: {
+            isDate: true,
+            async dateValidator(date) {
+                if (date < Date.now()) {
+                    await Task.update({ status: 'due' })
+                }
+            }
+        }
     },
     duration: {
-        type: DataTypes.INTEGER
-        // Greater than 0, less than 1440
+        type: DataTypes.INTEGER,
+        validate: {
+            isInt: true,
+            min: 0,
+            max: 1440
+        }
     },
     priority: {
         type: DataTypes.ENUM({
-            values: ['low', 'medium', 'high']
-        })
-        // default value ?
+            values: ['none', 'low', 'medium', 'high']
+        }),
+        defaultValue: 'none'
     }
 })
 
