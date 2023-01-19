@@ -44,10 +44,10 @@ jobs:
       - name: run tests
         run: npm test
         env:
-          PGUSER: postgres
-          PGDATABASE: postgres
-          PGPORT: 5432
-          PGHOST: localhost
+          POSTGRES_USER: postgres
+          POSTGRES_DATABASE: postgres
+          POSTGRES_PORT: 5432
+          POSTRGRES_HOST: localhost
 
       # deployment
       - name: deploy
