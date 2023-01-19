@@ -6,13 +6,15 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "set NODE_ENV=test && mocha",
+    "test": "mocha",
     "tasks": "node lib/task_runner.js"
   },
   "author": "rativity",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "2.0.20"
+    "mocha": "10.2.0",
+    "nodemon": "2.0.20",
+    "supertest": "6.3.3"
   },
   "dependencies": {
     "dotenv": "16.0.3",

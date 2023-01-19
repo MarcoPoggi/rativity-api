@@ -27,8 +27,8 @@ jobs:
         run: npm ci #using package-lock
 
       # testing
-      # - name: run tests
-      #   run: npm test
+      - name: run tests
+        run: npm test
 
       # deployment      
       - name: deploy

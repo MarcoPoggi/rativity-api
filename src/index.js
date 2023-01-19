@@ -1,20 +1,5 @@
-require("dotenv").config()
-const { database } = require("./database/database.js")
+const { server, database } = require("../config/server_config");
 
-const server = require("express")()
-const port = process.env.PORT || 3000
-
-server.get('/healthcheck', (req, res) => {
-  res.send("Rativity API it's work")
-})
-
-
-database.sync({ force: true })
-  .then(() => {
-    server.listen(port, () => {
-      console.log(`Rativity API listeing on port ${port}`)
-    })
-  })
-  .catch((e) => {
-    console.error(e.message)
-  })
+database.sync({ force: true, match: /(_test$|_development)$/ })
+  .then(() => server.listen(server.port, () => console.log(`${server.name} listeing on port ${server.port}.`)))
+  .catch((e) => console.error("Server error: ", e.message))

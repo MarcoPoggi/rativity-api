@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { database } = require('../database/database.js');
+const { database } = require('../database/database');
 
 const Task = database.define('task', {
     title: {
