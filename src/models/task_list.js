@@ -18,7 +18,7 @@ const TaskList = database.define('task_list', {
     },
     status: {
         type: DataTypes.ENUM({
-            values: ['active', 'completed', 'deleted']
+            values: ['active', 'deleted']
         }),
         allowNull: false,
         // defaultValue: 'active'
