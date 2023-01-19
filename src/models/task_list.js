@@ -14,7 +14,6 @@ const TaskList = database.define('task_list', {
     },
     icon: {
         type: DataTypes.STRING,
-        allowNull: false,
         // default value ?
     },
     status: {
