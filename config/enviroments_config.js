@@ -27,7 +27,7 @@ const ENVIROMENTS_CONFIG = {
       name: process.env.SERVER_NAME || "app"
     },
     database: {
-      database: 'rativity_test',
+      database: 'postgres',
       ...DATABASE_DEFAULT,
     }
 
