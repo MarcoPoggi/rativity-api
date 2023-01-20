@@ -19,6 +19,8 @@ jobs:
         image: postgres:15-alpine
         env:
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DATABASE: rativity_test
+          POSTGRES_PORT: 5432
 
         options: >-
           --health-cmd pg_isready
@@ -40,14 +42,18 @@ jobs:
       - name: install packages
         run: npm ci #using package-lock
 
+      - name: create testing database
+        run: psql -U postgres -c "CREATE DATABASE rativity_test;"
+
       # testing
       - name: run tests
         run: npm test
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_DATABASE: postgres
-          POSTGRES_PORT: 5432
-          POSTRGRES_HOST: localhost
+          PGPORT: 5432
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          PGHOST: locahost
+          PORT_TEST: 4001
 
       # deployment
       - name: deploy
