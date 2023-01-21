@@ -42,6 +42,10 @@ jobs:
       - name: install packages
         run: npm ci #using package-lock
 
+      - name: add postgres dev library
+        run: sudo apt-get install libpq-dev
+
+
       # testing
       - name: run tests
         run: npm test
