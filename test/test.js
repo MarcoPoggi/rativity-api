@@ -6,7 +6,7 @@ const { server, database } = require("../config/server_config");
 const server_on = server.listen(server.port, () => console.log(`${server.name} listeing on port ${server.port}.`))
 
 before(async () => {
-  await database.sync({ force: true, match: /_test$/ })
+  await database.sync({ force: true })
 })
 
 describe('Trying Test Runner', () => {
