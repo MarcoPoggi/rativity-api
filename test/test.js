@@ -6,6 +6,9 @@ const { server, database } = require("../config/server_config");
 const server_on = server.listen(server.port, () => console.log(`${server.name} listeing on port ${server.port}.`))
 
 before(async () => {
+  await database.authenticate().
+    then(() => console.log("database user authenticated."))
+    .catch((e) => console.error("authentication error: ", e.message))
   await database.sync({ force: true })
 })
 
