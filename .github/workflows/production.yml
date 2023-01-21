@@ -10,10 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-20.04
 
-    strategy:
-      matrix:
-        node: [16, 18]
-
     services:
       postgres:
         image: postgres:15-alpine
@@ -34,10 +30,10 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - name: setup ${{ matrix.node }}
+      - name: setup node 18
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node }}
+          node-version: '18'
 
       - name: install packages
         run: npm ci #using package-lock
@@ -45,6 +41,8 @@ jobs:
       - name: add postgres dev library
         run: sudo apt-get install libpq-dev
 
+      - name: print hosts
+        run : sudo cat /etc/hosts
 
       # testing
       - name: run tests
