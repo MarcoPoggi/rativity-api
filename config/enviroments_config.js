@@ -2,7 +2,7 @@ const ENV = process.env.NODE_ENV
 
 const DATABASE_DEFAULT = {
   username: process.env.PGUSER || process.env.POSTGRES_USER || "postgres",
-  password: process.env.PGPASSWORD || process.env.POSTGRES_PASSWORD || "",
+  password: process.env.PGPASSWORD || process.env.POSTGRES_PASSWORD || "postgres",
   host: process.env.PGHOST || process.env.POSTGRES_HOST ||"localhost",
   port: process.env.PGPORT || process.env.POSTGRES_PORT || 5432,
   dialect: "postgres",
