@@ -1,5 +1,11 @@
-const { server, database } = require("../config/server_config");
+require("dotenv").config()
 
-database.sync({ force: true, match: /(_test$|_development)$/ })
-  .then(() => server.listen(server.port, () => console.log(`${server.name} listeing on port ${server.port}.`)))
-  .catch((e) => console.error("Database sync error: ", e.message))
+const db = require("./database/models");
+const { server } = require("./server");
+
+db.sequelize.authenticate()
+  .then(() => {
+    console.log("Database authenticated.")
+    server.listen(server.port, () => console.log(`Server on port ${server.port}`));
+  })
+  .catch((e) => console.error(`An error occurred while trying to authenticate to the database:\n${e.message}`))

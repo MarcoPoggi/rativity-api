@@ -46,13 +46,11 @@ jobs:
           PGPORT: 5432
           PGUSER: postgres
           PGPASSWORD: postgres
-          PGHOST: locahost
-          PORT_TEST: 4001
-          NODE_ENV: test
+          PGHOST: localhost
 
       # deployment
       - name: deploy
         run: npm i -g @railway/cli && railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN_DEV }}
-        if: github.event_name == 'push'   
+        if: github.event_name == 'push'
