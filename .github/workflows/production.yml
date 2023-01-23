@@ -49,8 +49,6 @@ jobs:
           PGUSER: postgres
           PGPASSWORD: postgres
           PGHOST: locahost
-          PORT_TEST: 4001
-          NODE_ENV: test
 
       # deployment
       - name: deploy
