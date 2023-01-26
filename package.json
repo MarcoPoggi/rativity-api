@@ -6,10 +6,11 @@
   "scripts": {
     "start": "NODE_ENV=production node src/index.js",
     "dev": "NODE_ENV=development nodemon src/index.js",
-    "test": "NODE_ENV=test mocha test/core/*.js --recursive --timeout 60000",
+    "test": "node tasks/create_test_database.js && NODE_ENV=test mocha \"test/**/*.test.js\" --recursive --timeout 60000 --exit",
     "db:create": "npx sequelize-cli db:create",
     "db:migrate": "npx sequelize-cli db:migrate",
-    "db:drop": "npx sequelize-cli db:drop"
+    "db:drop": "npx sequelize-cli db:drop",
+    "db:reset": "npm run db:drop && npm run db:create && npm run db:migrate"
   },
   "author": "rativity",
   "license": "MIT",
