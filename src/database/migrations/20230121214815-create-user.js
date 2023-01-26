@@ -7,7 +7,7 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID,
-        defaultValue: Sequelize.UUIDV4
+        defaultValue: Sequelize.DataTypes.UUIDV4
       },
       username: {
         allowNull: false,
@@ -23,9 +23,9 @@ module.exports = {
         type: Sequelize.STRING
       },
       avatar: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.TEXT,
-        defaultValue: 'https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg'
+        defaultValue: 'https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg'
       },
       createdAt: {
         allowNull: false,
