@@ -1,20 +1,11 @@
 require("dotenv").config()
-const { database } = require("./database/database.js")
 
-const server = require("express")()
-const port = process.env.PORT || 3000
+const db = require("./database/models");
+const { server } = require("./server");
 
-server.get('/healthcheck', (req, res) => {
-  res.send("Rativity API it's work")
-})
-
-
-database.sync({ force: true })
+db.sequelize.authenticate()
   .then(() => {
-    server.listen(port, () => {
-      console.log(`Rativity API listeing on port ${port}`)
-    })
+    console.log("Database authenticated.")
+    server.listen(server.port, () => console.log(`Server on port ${server.port}`));
   })
-  .catch((e) => {
-    console.error(e.message)
-  })
+  .catch((e) => console.error(`An error occurred while trying to authenticate to the database:\n${e.message}`))
