@@ -1,0 +1,74 @@
+{
+  "user_data_valid": {
+    "username": "user_a",
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": "Pass1234",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid": {
+    "username": "",
+    "email": "user_email.gmail",
+    "passwordEncrypted": "pass",
+    "avatar": "upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg"
+  },
+  "user_data_invalid_duplicated_email": {
+    "username": "user_b",
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": "Bass1234",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid_empty_username": {
+    "username": "",
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": "Pass1234",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid_null_username": {
+    "username": null,
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": "Pass1234",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid_null_email": {
+    "username": "user_a",
+    "email": null,
+    "passwordEncrypted": "Pass1234",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid_format_email": {
+    "username": "user_a",
+    "email": "user_email.gmail",
+    "passwordEncrypted": "Pass1234",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid_format_avatar": {
+    "username": "user_a",
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": "Pass1234",
+    "avatar": "upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg"
+  },
+  "user_data_invalid_format_password": {
+    "username": "user_a",
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": "pass1234",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid_format_password_b": {
+    "username": "user_a",
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": "pass",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid_format_password_c": {
+    "username": "user_a",
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": "ABCD1234",
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  },
+  "user_data_invalid_null_password": {
+    "username": "user_a",
+    "email": "user_email@gmail.com",
+    "passwordEncrypted": null,
+    "avatar": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Avatar_icon_green.svg/640px-Avatar_icon_green.svg.png"
+  }
+}
