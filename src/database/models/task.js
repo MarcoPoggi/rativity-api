@@ -5,18 +5,12 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Task extends Model {
     static associate(models) {
-      // define association here
+      this.belongsTo(models.User, { foreignKey: "user_id" })
     }
   }
 
   Task.init(
     {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER
-      },
       title: {
         type: DataTypes.STRING,
         allowNull: false

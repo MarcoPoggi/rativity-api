@@ -1,11 +1,12 @@
 'use strict';
 
 const { Model } = require('sequelize');
+const { REGEXP_SECURE_PASSWORD, REGEXP_URL } = require('../../helpers/constants');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      // define association here
+      this.hasMany(models.Task, { foreignKey: "user_id" })
     }
   }
 
@@ -19,28 +20,48 @@ module.exports = (sequelize, DataTypes) => {
       },
       username: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          notEmpty: "username cannot be empty."
+        }
       },
       passwordEncrypted: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          is: {
+            args: REGEXP_SECURE_PASSWORD,
+            msg: "password must contain 8 characters, a lowercase letter, an uppercase letter and a digit."
+          }
+        }
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
+        unique: true,
+        validate: {
+          isEmail: {
+            msg: "email entered is not correct."
+          }
+        }
       },
       avatar: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        defaultValue: 'https://st3.depositphotos.com/1767687/16607/v/450/depositphotos_166074422-stock-illustration-default-avatar-profile-icon-grey.jpg'
+        allowNull: true,
+        defaultValue: 'https://png.pngtree.com/png-vector/20190710/ourlarge/pngtree-user-vector-avatar-png-image_1541962.jpg',
+        validate: {
+          is:{
+            args: REGEXP_URL,
+            msg: "avatar url provided is not secure."
+          }
+        }
       }
     },
     {
       sequelize,
       modelName: 'User',
       tableName: 'users',
-      indexes: [{ unique: true, fields: ['email'] }]
+      indexes: [{ unique: true, fields: ['email'] }],
     }
   );
 
